@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".eleme_button.ElemeBtnActivity">
         </activity>
+        <activity android:name=".rotate_circle.RotateCircleActivity">
+        </activity>
     </application>
 
 </manifest>

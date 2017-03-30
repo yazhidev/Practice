@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
+import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.elemeBtn).setOnClickListener(this);
+        findViewById(R.id.rotateBtn).setOnClickListener(this);
     }
 
     @Override
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.elemeBtn:
             //饿了么购物车按钮
             startActivity(new Intent(this, ElemeBtnActivity.class));
+            break;
+        case R.id.rotateBtn:
+            //饿了么购物车按钮
+            startActivity(new Intent(this, RotateCircleActivity.class));
             break;
         default:
             break;

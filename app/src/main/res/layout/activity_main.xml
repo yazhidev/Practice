@@ -29,6 +29,12 @@
             android:layout_height="wrap_content"
             android:text="饿了么购物车按钮"
             />
+        <Button
+            android:id="@+id/rotateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="圆环旋转渐变按钮"
+            />
 
     </LinearLayout>
 
