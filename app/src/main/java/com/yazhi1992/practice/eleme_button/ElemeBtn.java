@@ -16,6 +16,8 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.yazhi1992.practice.R;
+
 /**
  * Created by zengyazhi on 17/3/29.
  *
@@ -48,7 +50,7 @@ public class ElemeBtn extends View {
     //文字大小
     private float mTextSize;
     //文字
-    private String mHintText = "这是测试";
+    private String mHintText = "添加购物车";
     private int mCount= 0;
     //文字颜色
     private int mTextColor;
@@ -261,11 +263,11 @@ public class ElemeBtn extends View {
         mLineWidth = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 3f, getResources().getDisplayMetrics());
 
         mTextColor = Color.WHITE;
-        mBgColor = Color.BLUE;
-        mAddBgColor = Color.BLUE;
+        mBgColor = getResources().getColor(R.color.my_color);
+        mAddBgColor = getResources().getColor(R.color.my_color);
         mAddFgColor = Color.WHITE;
-        mDelBgColor = Color.GRAY;
-        mDelFgColor = Color.BLACK;
+        mDelBgColor = getResources().getColor(R.color.my_color);
+        mDelFgColor = Color.WHITE;
     }
 
     @Override

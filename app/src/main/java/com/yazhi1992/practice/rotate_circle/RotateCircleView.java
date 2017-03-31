@@ -14,6 +14,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import com.yazhi1992.practice.R;
+
 
 /**
  * Created by zengyazhi on 17/3/21.
@@ -50,7 +52,7 @@ public class RotateCircleView extends View {
     }
 
     private void init(Context context) {
-        mColor = Color.RED;
+        mColor = context.getResources().getColor(R.color.my_color);
 
         mPaint = new Paint();
         mPaint.setDither(true);
@@ -59,10 +61,6 @@ public class RotateCircleView extends View {
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-
-        int[] ints = new int[]{Color.WHITE, mColor};
-        mSweepGradient = new SweepGradient(mWidth / 2, mHeight / 2, ints, null);
-        mPaint.setShader(mSweepGradient);
 
         mRadiu = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, context.getResources().getDisplayMetrics());
 
@@ -117,11 +115,11 @@ public class RotateCircleView extends View {
             } else {
                 paintAngle = mRealAngle;
             }
+            canvas.rotate(mRealAngle, mWidth / 2, mHeight / 2);
             mPaint.setShader(mSweepGradient);
             mPaint.setStrokeWidth(mRadiu);
             mPaint.setStyle(Paint.Style.STROKE);
             mPaint.setStrokeCap(Paint.Cap.ROUND);
-            canvas.rotate(mRealAngle, mWidth / 2, mHeight / 2);
             canvas.drawArc(mRect, 360 - paintAngle, paintAngle, false, mPaint);
 
             //画被白色盖住的半个头部
@@ -162,5 +160,7 @@ public class RotateCircleView extends View {
         mRect.right = mWidth - mRadiu;
         mRect.bottom = mHeight - mRadiu;
 
+        int[] ints = new int[]{Color.WHITE, mColor};
+        mSweepGradient = new SweepGradient(mWidth / 2, mHeight / 2, ints, null);
     }
 }

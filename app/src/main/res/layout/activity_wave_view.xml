@@ -5,22 +5,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yazhi1992.practice.rotate_circle.RotateCircleActivity">
+    tools:context="com.yazhi1992.practice.wave_view.WaveViewActivity">
 
-    <com.yazhi1992.practice.rotate_circle.RotateCircleView
-        android:id="@+id/rotateCircelView"
+    <com.yazhi1992.practice.wave_view.WaveView
+        android:id="@+id/waveView"
         android:layout_width="300dp"
         android:layout_height="300dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintVertical_bias="0.284"/>
 
     <Button
-        android:id="@+id/btn"
+        android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="动画开始/结束"
-        />
+        android:text="动画开始"/>
 
 </android.support.constraint.ConstraintLayout>

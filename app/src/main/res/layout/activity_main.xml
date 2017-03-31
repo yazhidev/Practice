@@ -35,6 +35,12 @@
             android:layout_height="wrap_content"
             android:text="圆环旋转渐变按钮"
             />
+        <Button
+            android:id="@+id/waveBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="水波纹"
+            />
 
     </LinearLayout>
 
