@@ -39,13 +39,19 @@
             android:id="@+id/waveBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="水波纹"
+            android:text="波浪效果（两种实现）"
             />
         <Button
             android:id="@+id/verticalTextBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="竖排文字"
+            />
+        <Button
+            android:id="@+id/bezierBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="贝塞尔水滴动画"
             />
 
     </LinearLayout>

@@ -24,6 +24,9 @@
         </activity>
         <activity android:name=".vertical_text.VerticalTextActivity">
         </activity>
+        <activity android:name=".bezier_anim.BezierAnimActivity">
+
+        </activity>
     </application>
 
 </manifest>

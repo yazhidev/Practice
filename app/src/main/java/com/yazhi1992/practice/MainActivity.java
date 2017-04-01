@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
 import com.yazhi1992.practice.vertical_text.VerticalTextActivity;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.rotateBtn).setOnClickListener(this);
         findViewById(R.id.waveBtn).setOnClickListener(this);
         findViewById(R.id.verticalTextBtn).setOnClickListener(this);
+        findViewById(R.id.bezierBtn).setOnClickListener(this);
     }
 
     @Override
@@ -35,12 +37,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, RotateCircleActivity.class));
             break;
         case R.id.waveBtn:
-            //水波纹
+            //波浪效果
             startActivity(new Intent(this, WaveViewActivity.class));
             break;
         case R.id.verticalTextBtn:
             //竖排文字
             startActivity(new Intent(this, VerticalTextActivity.class));
+            break;
+        case R.id.bezierBtn:
+            //贝塞尔动画
+            startActivity(new Intent(this, BezierAnimActivity.class));
             break;
         default:
             break;

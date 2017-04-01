@@ -39,6 +39,7 @@ public class VerticalText extends View {
     private float mTopBottomSpacing;
     //左右行间距
     private float mLeftRightSpacing;
+    //每列需要绘制的文字列表
     private List<String> mFormatTexts = new ArrayList<>();
     //计算每行可容纳文字数目后得出的上下边距
     private float mCalculatePaddingTopBottom;

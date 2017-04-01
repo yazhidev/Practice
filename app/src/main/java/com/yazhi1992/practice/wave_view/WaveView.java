@@ -20,7 +20,7 @@ import com.yazhi1992.practice.utils.Utils;
 /**
  * Created by zengyazhi on 17/3/31.
  * <p>
- * 水波效果进度条
+ * 波浪效果进度条
  */
 
 public class WaveView extends View {
