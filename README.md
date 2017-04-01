@@ -14,3 +14,7 @@
 
 ![水波纹.gif](http://upload-images.jianshu.io/upload_images/1929170-021b91b08071fe77.gif?imageMogr2/auto-orient/strip)
 
+
+## 竖排文字
+
+![竖排文字.png](http://upload-images.jianshu.io/upload_images/1929170-7083f4ef7e1c7a94.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
