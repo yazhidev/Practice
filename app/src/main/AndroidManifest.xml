@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".wave_view.WaveViewActivity">
         </activity>
+        <activity android:name=".vertical_text.VerticalTextActivity">
+        </activity>
     </application>
 
 </manifest>

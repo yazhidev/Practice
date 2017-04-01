@@ -41,6 +41,12 @@
             android:layout_height="wrap_content"
             android:text="水波纹"
             />
+        <Button
+            android:id="@+id/verticalTextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="竖排文字"
+            />
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
+import com.yazhi1992.practice.vertical_text.VerticalTextActivity;
 import com.yazhi1992.practice.wave_view.WaveViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.elemeBtn).setOnClickListener(this);
         findViewById(R.id.rotateBtn).setOnClickListener(this);
         findViewById(R.id.waveBtn).setOnClickListener(this);
+        findViewById(R.id.verticalTextBtn).setOnClickListener(this);
     }
 
     @Override
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.waveBtn:
             //水波纹
             startActivity(new Intent(this, WaveViewActivity.class));
+            break;
+        case R.id.verticalTextBtn:
+            //竖排文字
+            startActivity(new Intent(this, VerticalTextActivity.class));
             break;
         default:
             break;
