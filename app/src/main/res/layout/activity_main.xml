@@ -53,6 +53,18 @@
             android:layout_height="wrap_content"
             android:text="贝塞尔水滴动画"
             />
+        <Button
+            android:id="@+id/rippleBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="涟漪"
+            />
+        <Button
+            android:id="@+id/lineChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="折线图"
+            />
 
     </LinearLayout>
 

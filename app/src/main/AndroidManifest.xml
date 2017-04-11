@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".eleme_button.ElemeBtnActivity">
         </activity>
@@ -25,7 +20,15 @@
         <activity android:name=".vertical_text.VerticalTextActivity">
         </activity>
         <activity android:name=".bezier_anim.BezierAnimActivity">
+        </activity>
+        <activity android:name=".ripple_view.RippleActivity">
+        </activity>
+        <activity android:name=".line_chart_view.LineChartActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

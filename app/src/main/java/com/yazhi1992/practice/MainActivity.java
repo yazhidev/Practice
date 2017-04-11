@@ -7,6 +7,8 @@ import android.view.View;
 
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
+import com.yazhi1992.practice.line_chart_view.LineChartActivity;
+import com.yazhi1992.practice.ripple_view.RippleActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
 import com.yazhi1992.practice.vertical_text.VerticalTextActivity;
 import com.yazhi1992.practice.wave_view.WaveViewActivity;
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.waveBtn).setOnClickListener(this);
         findViewById(R.id.verticalTextBtn).setOnClickListener(this);
         findViewById(R.id.bezierBtn).setOnClickListener(this);
+        findViewById(R.id.rippleBtn).setOnClickListener(this);
+        findViewById(R.id.lineChart).setOnClickListener(this);
     }
 
     @Override
@@ -47,6 +51,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.bezierBtn:
             //贝塞尔动画
             startActivity(new Intent(this, BezierAnimActivity.class));
+            break;
+        case R.id.rippleBtn:
+            //涟漪
+            startActivity(new Intent(this, RippleActivity.class));
+            break;
+        case R.id.lineChart:
+            //折线图
+            startActivity(new Intent(this, LineChartActivity.class));
             break;
         default:
             break;

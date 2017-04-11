@@ -23,7 +23,7 @@ import com.yazhi1992.practice.utils.Utils;
  * 波浪效果进度条
  */
 
-public class WaveView extends View {
+public class SinWave extends View {
 
     private Paint mPaint;
     private Path mPath;
@@ -42,15 +42,15 @@ public class WaveView extends View {
     //波浪高度
     private int mWaveHeight;
 
-    public WaveView(Context context) {
+    public SinWave(Context context) {
         this(context, null);
     }
 
-    public WaveView(Context context, @Nullable AttributeSet attrs) {
+    public SinWave(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public WaveView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public SinWave(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }

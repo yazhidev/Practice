@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.util.TypedValue;
 
 /**
  * Created by zengyazhi on 17/3/31.
@@ -35,6 +36,10 @@ public class Utils {
         matrix.setScale(scaleX, scaleY);
 
         return Bitmap.createBitmap(bitmap, 0, 0, bWidth, bHeight, matrix, true);
+    }
+
+    public static float dp2px(Context Context, int dp) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Context.getResources().getDisplayMetrics());
     }
 
 }

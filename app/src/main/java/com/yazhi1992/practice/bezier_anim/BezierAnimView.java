@@ -2,7 +2,6 @@ package com.yazhi1992.practice.bezier_anim;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.pm.ProviderInfo;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
@@ -58,9 +57,11 @@ public class BezierAnimView extends View {
         mPath = new Path();
 
         mRadiu = 60;
-
     }
 
+    // TODO: 17/4/1  QQ未读粘脸效果
+
+    
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
