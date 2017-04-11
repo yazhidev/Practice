@@ -290,6 +290,7 @@ public class LineChart extends View {
             default:
                 break;
         }
+        
         return true;
     }
 }
