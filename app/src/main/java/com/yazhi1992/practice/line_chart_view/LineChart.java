@@ -11,14 +11,13 @@ import android.graphics.RectF;
 import android.graphics.Region;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.yazhi1992.practice.utils.Utils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +53,7 @@ public class LineChart extends View {
     //数值
     private List<ValueBean> mValueList = new ArrayList<>();
     private int mMaxYValue;
+    private int mMinYValue;
     //y轴坐标值最大宽度
     private float mMaxYWidth;
     //x轴坐标值高度
@@ -62,12 +62,18 @@ public class LineChart extends View {
     private Path mChartPath;
     private float mStartX;
     private float mStartPaintX;
+    //点击时，获得开始绘制的x坐标
     private float mActionDownPaintX;
+    //手指拖动时x轴的偏移量
     private float mOffset;
     //x轴起始绘制点
     private float mOriginalX;
     private List<Region> mRegionList = new ArrayList<>();
+    //点击的点在数组中的位置
     private int mClickNum = -1;
+    //y轴的最大/最小刻度值
+    private int mYAxisMaxValue;
+    private int mYAxisMinValue;
 
     public LineChart(Context context) {
         this(context, null);
@@ -103,12 +109,13 @@ public class LineChart extends View {
     public void setValueList(List<ValueBean> valueList) {
         mValueList = valueList;
         mMaxYValue = 0;
+        mMinYValue = 0;
         getYAxisTextWidth();
         postInvalidate();
     }
 
     /**
-     * 获取y轴文字最大宽度
+     * 获取y轴文字最大宽度与y轴最大、最小刻度值
      * 如果y轴是数值，即计算最大数值得宽度
      */
     private void getYAxisTextWidth() {
@@ -116,9 +123,40 @@ public class LineChart extends View {
             for (int i = 0; i < mValueList.size(); i++) {
                 ValueBean valueBean = mValueList.get(i);
                 mMaxYValue = Math.max(mMaxYValue, valueBean.getYValue());
+                if (i == 0) {
+                    mMinYValue = valueBean.getYValue();
+                } else {
+                    mMinYValue = Math.min(mMinYValue, valueBean.getYValue());
+                }
             }
         }
 
+        //对y轴最大最小值的换算，以免都使用0为起始刻度，使得在数值较大时几乎就是一条直线
+        String s = Integer.toString(mMaxYValue);
+        //几位数
+        int length = s.length();
+        int pow = (int) Math.pow(10, length - 2);
+        int i = mMaxYValue / pow;
+        mYAxisMaxValue = (i + 1) * pow;
+
+        String s2 = Integer.toString(mMinYValue);
+        //几位数
+        int length2 = s2.length();
+        if (length2 <= 2) {
+            mYAxisMinValue = 0;
+        } else {
+            int pow2 = (int) Math.pow(10, length2 - 2);
+            double d2 = mMinYValue * 1d / pow2;
+            int i2 = mMinYValue / pow2;
+            BigDecimal bigDecimal = new BigDecimal(d2).setScale(0, BigDecimal.ROUND_HALF_UP);
+            if (i2 < bigDecimal.doubleValue()) {
+                //五入
+                mYAxisMinValue = i2 * pow2;
+            } else {
+                //四舍
+                mYAxisMinValue = (i2 - 1) * pow2;
+            }
+        }
     }
 
     @Override
@@ -175,12 +213,12 @@ public class LineChart extends View {
         float xDistance = Utils.dp2px(mContext, 40);
 
         //计算坐标轴值得宽高，确定顶点位置
-        if (mMaxYWidth == 0) {
+        if (mMaxYWidth == 0 && mMaxYValue != 0) {
             //y坐标值宽度，与y坐标距离10dp
             mMaxYWidth = mAxisTextPaint.measureText(Integer.toString(mMaxYValue)) + Utils.dp2px(mContext, 10);
             //x坐标值高度，与x坐标距离10dp
             mXHeight = -mAxisTextPaint.ascent() + Utils.dp2px(mContext, 10);
-            mOriginalX = mMaxYWidth;
+            mOriginalX = mMaxYWidth + Utils.dp2px(mContext, 20);
             mActionDownPaintX = mOriginalX;
         }
 
@@ -194,17 +232,18 @@ public class LineChart extends View {
         float yDistance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
         //总共多少刻度，空余10%高度
         int number = (int) ((mHeight - mXHeight) * 0.9 / yDistance);
-        // TODO: 17/4/11 间距算法
-        //y刻度值间隔，上浮10%，间距取整
-        int yValue = (int) Math.ceil(mMaxYValue * 1.1 / number);
+        //y刻度值间隔，间距取整
+        int yValue = (int) Math.ceil((mYAxisMaxValue - mYAxisMinValue) / number);
         //y轴使用到的高度(用于计算每个值所在高度时使用)
         float yUsedHeight = number * yDistance;
         float yUserValue = number * yValue;
+        //绘制y轴最小刻度值
+        canvas.drawText(Integer.toString(mYAxisMinValue), 0 + mAxisTextPaint.measureText(Integer.toString(mMaxYValue)) - mAxisTextPaint.measureText(Integer.toString(mYAxisMinValue)), mHeight - mXHeight + mAxisWidth / 2 - mAxisTextPaint.ascent() / 2, mAxisTextPaint);
         for (int i = 1; i <= number; i++) {
             //绘制y轴刻度
             canvas.drawLine(mMaxYWidth, mHeight - mXHeight - yDistance * i + mAxisWidth / 2, mMaxYWidth + length, mHeight - mXHeight - yDistance * i + mAxisWidth / 2, mAxisPaint);
             //绘制y轴刻度值
-            int yNumber = yValue * i;
+            int yNumber = mYAxisMinValue + yValue * i;
             canvas.drawText(Integer.toString(yNumber), 0 + mAxisTextPaint.measureText(Integer.toString(mMaxYValue)) - mAxisTextPaint.measureText(Integer.toString(yNumber)), mHeight - mXHeight - yDistance * i + mAxisWidth / 2 - mAxisTextPaint.ascent() / 2, mAxisTextPaint);
         }
 
@@ -231,25 +270,25 @@ public class LineChart extends View {
             //构造折线path
             Region region = new Region();
             Path path = new Path();
-            path.addCircle(startPaintX, valueBean.getYValue() / yUserValue * yUsedHeight, Utils.dp2px(mContext, 10), Path.Direction.CW);
+            //点20dp范围内可点击
+            path.addCircle(startPaintX, mHeight - mXHeight - (valueBean.getYValue() - mYAxisMinValue) / yUserValue * yUsedHeight, Utils.dp2px(mContext, 20), Path.Direction.CW);
             region.setPath(path, new Region(0, 0, mWidth, mHeight));
             mRegionList.add(region);
             if (i == 0) {
                 mChartPath.reset();
-                mChartPath.moveTo(startPaintX, valueBean.getYValue() / yUserValue * yUsedHeight);
+                mChartPath.moveTo(startPaintX, mHeight - mXHeight - (valueBean.getYValue() - mYAxisMinValue) / yUserValue * yUsedHeight);
             } else {
-                mChartPath.lineTo(startPaintX, valueBean.getYValue() / yUserValue * yUsedHeight);
-            }
-
-            if(mClickNum == i) {
-                //点击了该点，绘制数值
-                canvas.drawText(Integer.toString(valueBean.getYValue()), startPaintX - mAxisTextPaint.measureText(Integer.toString(valueBean.getYValue())) / 2, valueBean.getYValue() / yUserValue * yUsedHeight - Utils.dp2px(mContext, 15), mAxisTextPaint);
+                mChartPath.lineTo(startPaintX, mHeight - mXHeight - (valueBean.getYValue() - mYAxisMinValue) / yUserValue * yUsedHeight);
             }
             startPaintX += xDistance;
         }
 
         //新开图层
         int layerId = canvas.saveLayer(0, 0, mWidth, mHeight, null, Canvas.ALL_SAVE_FLAG);
+        if (mClickNum != -1) {
+            //点击了该点，绘制数值
+            canvas.drawText(Integer.toString(mValueList.get(mClickNum).getYValue()), mStartPaintX + xDistance * mClickNum - mAxisTextPaint.measureText(Integer.toString(mValueList.get(mClickNum).getYValue())) / 2, mHeight - mXHeight - (mValueList.get(mClickNum).getYValue() - mYAxisMinValue) / yUserValue * yUsedHeight - Utils.dp2px(mContext, 15), mAxisTextPaint);
+        }
         //绘制折线
         mChartPaint.setXfermode(null);
         mChartPaint.setColor(mChartColor);
@@ -259,16 +298,24 @@ public class LineChart extends View {
         mChartPaint.setStyle(Paint.Style.FILL);
         mChartPaint.setColor(Color.TRANSPARENT);
         mChartPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-        RectF rectF = new RectF(0, 0, mOriginalX, mHeight);
+        RectF rectF = new RectF(0, 0, mMaxYWidth, mHeight);
         canvas.drawRect(rectF, mChartPaint);
         //保存图层
         canvas.restoreToCount(layerId);
     }
 
+    // TODO: 17/4/11 滑动 惯性
+
+    // TODO: 17/4/11 和scrollview一起的问题
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                mActionDownPaintX = mStartPaintX;
+                mOffset = 0;
+                mStartX = event.getX();
+                //判断是否点击了折线点
                 for (int i = 0; i < mRegionList.size(); i++) {
                     Region region = mRegionList.get(i);
                     if (region.contains((int) (event.getX()), (int) (event.getY()))) {
@@ -277,8 +324,6 @@ public class LineChart extends View {
                         break;
                     }
                 }
-                mStartX = event.getX();
-                mActionDownPaintX = mStartPaintX;
                 break;
             case MotionEvent.ACTION_MOVE:
                 float x = event.getX();
@@ -290,7 +335,7 @@ public class LineChart extends View {
             default:
                 break;
         }
-        
+
         return true;
     }
 }

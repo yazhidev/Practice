@@ -26,7 +26,7 @@ public class LineChartActivity extends AppCompatActivity {
 
         int time = 1101;
         for (int i = 0; i < 12; i++) {
-            mData.add(new ValueBean("" + time, (int) (10 + Math.random() * 15)));
+            mData.add(new ValueBean("" + time, (int) (100 + Math.random() * 150)));
             time++;
         }
 
