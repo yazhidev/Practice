@@ -24,9 +24,9 @@ public class LineChartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_line_chart);
 
-        int time = 1101;
+        int time = 0;
         for (int i = 0; i < 20; i++) {
-            mData.add(new ValueBean("" + time, (int) (100 + Math.random() * 150)));
+            mData.add(new ValueBean("" + time, (int) (1000 + Math.random() * 200)));
             time++;
         }
 

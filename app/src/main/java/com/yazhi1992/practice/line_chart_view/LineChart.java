@@ -140,8 +140,18 @@ public class LineChart extends View {
         //几位数
         int length = s.length();
         int pow = (int) Math.pow(10, length - 2);
-        int i = mMaxYValue / pow;
-        mYAxisMaxValue = (i + 1) * pow;
+        double d1 = mMaxYValue * 1d / pow;
+        int newi1 = mMaxYValue / pow;
+        BigDecimal bigDecimal1 = new BigDecimal(d1).setScale(0, BigDecimal.ROUND_HALF_UP);
+        if (newi1 < bigDecimal1.doubleValue()) {
+            //五入
+            mYAxisMaxValue = (newi1 + 1) * pow;
+        } else {
+            //四舍
+            int newPow = pow / 10;
+            int newI = mMaxYValue / newPow;
+            mYAxisMaxValue = (newI + 1) * newPow;
+        }
 
         String s2 = Integer.toString(mMinYValue);
         //几位数
@@ -155,10 +165,12 @@ public class LineChart extends View {
             BigDecimal bigDecimal = new BigDecimal(d2).setScale(0, BigDecimal.ROUND_HALF_UP);
             if (i2 < bigDecimal.doubleValue()) {
                 //五入
-                mYAxisMinValue = i2 * pow2;
+                int pow3 = pow2 / 10;
+                int i3 = mMaxYValue / pow3;
+                mYAxisMinValue = (i3- 1) * pow3;
             } else {
                 //四舍
-                mYAxisMinValue = (i2 - 1) * pow2;
+                mYAxisMinValue = i2 * pow2;
             }
         }
 
@@ -230,6 +242,7 @@ public class LineChart extends View {
 
     /**
      * 绘制x轴与折线
+     *
      * @param canvas
      */
     private void drawXAxisAndLine(Canvas canvas) {
@@ -304,6 +317,7 @@ public class LineChart extends View {
 
     /**
      * 绘制y轴刻度与刻度值
+     *
      * @param canvas
      */
     private void drawYAxis(Canvas canvas) {
@@ -330,6 +344,7 @@ public class LineChart extends View {
 
     /**
      * 绘制坐标轴
+     *
      * @param canvas
      */
     private void drawAxis(Canvas canvas) {
@@ -338,10 +353,6 @@ public class LineChart extends View {
         //绘制y轴
         canvas.drawLine(mMaxYWidth, mHeight - mXHeight, mMaxYWidth, 0, mAxisPaint);
     }
-
-    // TODO: 17/4/11 滑动 惯性
-
-    // TODO: 17/4/11 和scrollview一起的问题
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
