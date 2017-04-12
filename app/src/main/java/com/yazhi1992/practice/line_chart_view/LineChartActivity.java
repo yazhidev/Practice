@@ -25,7 +25,7 @@ public class LineChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_line_chart);
 
         int time = 1101;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 20; i++) {
             mData.add(new ValueBean("" + time, (int) (100 + Math.random() * 150)));
             time++;
         }
