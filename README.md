@@ -10,9 +10,9 @@
 
 ![eleme.gif](http://upload-images.jianshu.io/upload_images/1929170-992de19b7ba750e4.gif?imageMogr2/auto-orient/strip)
 
-## 渐变圆环
-真机效果没这么丑的~
-![圆环.gif](http://upload-images.jianshu.io/upload_images/1929170-adf6c82d173fdcb5.gif?imageMogr2/auto-orient/strip)
+## 折线图
+
+![折线](http://upload-images.jianshu.io/upload_images/1929170-a87c66d0610bbe81.gif?imageMogr2/auto-orient/strip)
 
 ## 波浪效果进度条（正弦函数实现+贝塞尔曲线实现）
 
@@ -21,3 +21,8 @@
 ## 竖排文字
 
 ![竖排文字.png](http://upload-images.jianshu.io/upload_images/1929170-c3b0efc81a30dbfc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 渐变圆环
+真机效果没这么丑的~
+![圆环.gif](http://upload-images.jianshu.io/upload_images/1929170-adf6c82d173fdcb5.gif?imageMogr2/auto-orient/strip)
+
