@@ -48,12 +48,6 @@
             android:text="竖排文字"
             />
         <Button
-            android:id="@+id/bezierBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="贝塞尔水滴动画"
-            />
-        <Button
             android:id="@+id/rippleBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,6 +58,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="折线图"
+            />
+        <Button
+            android:id="@+id/wheelView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="滚轮"
+            android:visibility="gone"
+            />
+        <Button
+            android:visibility="gone"
+            android:id="@+id/bezierBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="贝塞尔水滴动画"
+            />
+        <Button
+            android:id="@+id/roundBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="圆角控件"
             />
 
     </LinearLayout>

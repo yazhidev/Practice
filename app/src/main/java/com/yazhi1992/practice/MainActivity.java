@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.bezierBtn).setOnClickListener(this);
         findViewById(R.id.rippleBtn).setOnClickListener(this);
         findViewById(R.id.lineChart).setOnClickListener(this);
+        findViewById(R.id.wheelView).setOnClickListener(this);
     }
 
     @Override
@@ -58,6 +59,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
         case R.id.lineChart:
             //折线图
+            startActivity(new Intent(this, LineChartActivity.class));
+            break;
+        case R.id.wheelView:
+            //滚轮
             startActivity(new Intent(this, LineChartActivity.class));
             break;
         default:

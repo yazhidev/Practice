@@ -16,6 +16,7 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.yazhi1992.practice.R;
 import com.yazhi1992.practice.utils.Utils;
 
 import java.math.BigDecimal;
@@ -167,7 +168,7 @@ public class LineChart extends View {
                 //五入
                 int pow3 = pow2 / 10;
                 int i3 = mMaxYValue / pow3;
-                mYAxisMinValue = (i3- 1) * pow3;
+                mYAxisMinValue = (i3 - 1) * pow3;
             } else {
                 //四舍
                 mYAxisMinValue = i2 * pow2;
@@ -205,9 +206,9 @@ public class LineChart extends View {
     private void initDefaultValue() {
         mAxisTextSize = Utils.dp2px(mContext, 12);
         mXDistance = Utils.dp2px(mContext, 40);
+        mChartColor = mContext.getResources().getColor(R.color.my_color);
         mAxisColor = Color.BLACK;
         mAxisTextColor = Color.BLACK;
-        mChartColor = Color.BLACK;
         mAxisWidth = 5;
     }
 
@@ -254,6 +255,9 @@ public class LineChart extends View {
         } else if (mStartPaintX < mOriginalX - (mValueList.size() - mWidth / mXDistance + 1) * mXDistance) {
             //拖到最右边，不允许继续往左拖动
             mStartPaintX = mOriginalX - (mValueList.size() - mWidth / mXDistance + 1) * mXDistance;
+            if (mValueAnimator != null && mValueAnimator.isRunning()) {
+                mValueAnimator.cancel();
+            }
         }
         float startPaintX = mStartPaintX;
         mRegionMap.clear();
