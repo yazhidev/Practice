@@ -32,6 +32,8 @@
         </activity>
         <activity android:name=".wheel_view.WheelViewActivity">
         </activity>
+        <activity android:name=".hook_icon.HookIconActivity">
+        </activity>
     </application>
 
 </manifest>

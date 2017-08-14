@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
+import com.yazhi1992.practice.hook_icon.HookIconActivity;
 import com.yazhi1992.practice.line_chart_view.LineChartActivity;
 import com.yazhi1992.practice.ripple_view.RippleActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.rippleBtn).setOnClickListener(this);
         findViewById(R.id.lineChart).setOnClickListener(this);
         findViewById(R.id.wheelView).setOnClickListener(this);
+        findViewById(R.id.alipayHookIconBtn).setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.wheelView:
             //滚轮
             startActivity(new Intent(this, LineChartActivity.class));
+            break;
+        case R.id.alipayHookIconBtn:
+            //支付宝支付成功打钩动画
+            startActivity(new Intent(this, HookIconActivity.class));
             break;
         default:
             break;
