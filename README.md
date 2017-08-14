@@ -10,6 +10,10 @@
 
 ![eleme.gif](http://upload-images.jianshu.io/upload_images/1929170-992de19b7ba750e4.gif?imageMogr2/auto-orient/strip)
 
+## 仿支付宝支付成功动画
+
+![支付宝支付成功动画](http://upload-images.jianshu.io/upload_images/1929170-ee6377a352720bba.gif?imageMogr2/auto-orient/strip)
+
 ## 波浪效果进度条（正弦函数实现+贝塞尔曲线实现）
 
 ![波浪效果.gif](http://upload-images.jianshu.io/upload_images/1929170-d0ce2b7f6f107f98.gif?imageMogr2/auto-orient/strip)
