@@ -7,87 +7,104 @@
     android:layout_height="match_parent"
     tools:context="com.yazhi1992.practice.MainActivity">
 
-<ScrollView
-    android:id="@+id/sv"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    android:fillViewport="true"
-    >
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/alipayHookIconBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="支付宝支付成功打钩"
-            />
-        <Button
-            android:id="@+id/elemeBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="饿了么购物车按钮"
-            />
-        <Button
-            android:id="@+id/rotateBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="圆环旋转渐变按钮"
-            />
-        <Button
-            android:id="@+id/waveBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="波浪效果（两种实现）"
-            />
-        <Button
-            android:id="@+id/verticalTextBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="竖排文字"
-            />
-        <Button
-            android:id="@+id/rippleBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="涟漪"
-            />
-        <Button
-            android:id="@+id/lineChart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="折线图"
-            />
-        <Button
-            android:id="@+id/wheelView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="滚轮"
-            android:visibility="gone"
-            />
-        <Button
-            android:visibility="gone"
-            android:id="@+id/bezierBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="贝塞尔水滴动画"
-            />
-        <Button
-            android:id="@+id/roundBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="圆角控件"
-            />
+            <Button
+                android:id="@+id/immersionStatusBarBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="沉浸式状态栏"
+                />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/alipayHookIconBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="支付宝支付成功打钩"
+                />
 
-</ScrollView>
-    
+            <Button
+                android:id="@+id/elemeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="饿了么购物车按钮"
+                />
+
+            <Button
+                android:id="@+id/rotateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="圆环旋转渐变按钮"
+                />
+
+            <Button
+                android:id="@+id/waveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="波浪效果（两种实现）"
+                />
+
+            <Button
+                android:id="@+id/verticalTextBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="竖排文字"
+                />
+
+            <Button
+                android:id="@+id/rippleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="涟漪"
+                />
+
+            <Button
+                android:id="@+id/lineChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="折线图"
+                />
+
+            <Button
+                android:id="@+id/wheelView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="滚轮"
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/bezierBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="贝塞尔水滴动画"
+                android:visibility="gone"
+                />
+
+            <Button
+                android:id="@+id/roundBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="圆角控件"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

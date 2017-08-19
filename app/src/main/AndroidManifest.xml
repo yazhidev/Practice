@@ -34,6 +34,15 @@
         </activity>
         <activity android:name=".hook_icon.HookIconActivity">
         </activity>
+        <activity android:name=".immersion_status_bar.MainImmersionActivity">
+        </activity>
+        <activity
+            android:name=".immersion_status_bar.ImmersionImageActivity"
+            android:theme="@style/NoActionBarTheme">
+        </activity>
+        <activity android:name=".immersion_status_bar.ImmersionBarActivity"
+                  android:theme="@style/NoActionBarTheme">
+        </activity>
     </application>
 
 </manifest>

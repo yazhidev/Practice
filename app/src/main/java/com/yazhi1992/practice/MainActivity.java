@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
 import com.yazhi1992.practice.hook_icon.HookIconActivity;
+import com.yazhi1992.practice.immersion_status_bar.MainImmersionActivity;
 import com.yazhi1992.practice.line_chart_view.LineChartActivity;
 import com.yazhi1992.practice.ripple_view.RippleActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.elemeBtn).setOnClickListener(this);
+        findViewById(R.id.immersionStatusBarBtn).setOnClickListener(this);
         findViewById(R.id.rotateBtn).setOnClickListener(this);
         findViewById(R.id.waveBtn).setOnClickListener(this);
         findViewById(R.id.verticalTextBtn).setOnClickListener(this);
@@ -70,6 +73,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.alipayHookIconBtn:
             //支付宝支付成功打钩动画
             startActivity(new Intent(this, HookIconActivity.class));
+            break;
+        case R.id.immersionStatusBarBtn:
+            //沉浸式状态栏
+            startActivity(new Intent(this, MainImmersionActivity.class));
             break;
         default:
             break;
