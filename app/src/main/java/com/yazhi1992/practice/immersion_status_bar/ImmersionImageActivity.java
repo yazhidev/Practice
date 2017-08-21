@@ -15,6 +15,7 @@ public class ImmersionImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_immersion_image);
 
-        StatusBarUtils.setStatusTransparentBySetFullScreen(this);
+        StatusBarUtils.with(this)
+                .init();
     }
 }

@@ -7,4 +7,7 @@
     <color name="my_color2">#3F51B5</color>
     <color name="blue">#65B6EF</color>
     <color name="white">#ffffff</color>
+    <color name="shape1">#5d8df7</color>
+    <color name="shape2">#5EB9F8</color>
+    <color name="shape3">#5CC2F8</color>
 </resources>

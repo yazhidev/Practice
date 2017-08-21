@@ -40,8 +40,14 @@
             android:name=".immersion_status_bar.ImmersionImageActivity"
             android:theme="@style/NoActionBarTheme">
         </activity>
-        <activity android:name=".immersion_status_bar.ImmersionBarActivity"
-                  android:theme="@style/NoActionBarTheme">
+        <activity
+            android:name=".immersion_status_bar.ImmersionBarActivity"
+            android:theme="@style/NoActionBarTheme">
+        </activity>
+        <activity
+            android:name=".immersion_status_bar.ImmersionNavActivity"
+            android:label="@string/title_activity_immersion_nav"
+            android:theme="@style/NoActionBarTheme">
         </activity>
     </application>
 

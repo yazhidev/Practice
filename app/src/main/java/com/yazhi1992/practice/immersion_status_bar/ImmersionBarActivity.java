@@ -13,11 +13,8 @@ public class ImmersionBarActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_immersion_bar);
 
-        StatusBarUtils.addStatusView(this);
-
-        StatusBarUtils.setFitsSystemWindows(this, true);
-
-        StatusBarUtils.SetFullScreen(this);
-
+        StatusBarUtils.with(this)
+                .setColor(getResources().getColor(R.color.blue))
+                .init();
     }
 }

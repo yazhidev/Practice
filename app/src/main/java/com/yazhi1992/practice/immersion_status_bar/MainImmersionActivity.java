@@ -18,6 +18,7 @@ public class MainImmersionActivity extends AppCompatActivity implements View.OnC
 
         findViewById(R.id.immersion_img_btn).setOnClickListener(this);
         findViewById(R.id.immersion_normal_btn).setOnClickListener(this);
+        findViewById(R.id.immersion_nav_btn).setOnClickListener(this);
     }
 
     @Override
@@ -28,6 +29,9 @@ public class MainImmersionActivity extends AppCompatActivity implements View.OnC
             break;
         case R.id.immersion_normal_btn:
             startActivity(new Intent(this, ImmersionBarActivity.class));
+            break;
+        case R.id.immersion_nav_btn:
+            startActivity(new Intent(this, ImmersionNavActivity.class));
             break;
         default:
             break;

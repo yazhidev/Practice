@@ -2,34 +2,107 @@ package com.yazhi1992.practice.immersion_status_bar;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.yazhi1992.practice.R;
+import android.widget.LinearLayout;
 
 /**
  * Created by zengyazhi on 2017/8/17.
  */
 
 public class StatusBarUtils {
-    private StatusBarUtils() {
+    private Activity mActivity;
+    //状态栏颜色
+    private int mColor = -1;
+    //状态栏drawble
+    private Drawable mDrawable;
+    //是否是最外层布局是 DrawerLayout 的侧滑菜单
+    private boolean mIsDrawerLayout;
+    //侧滑菜单页面的内容视图
+    private int mContentResourseIdInDrawer;
+
+    public StatusBarUtils(Activity activity) {
+        mActivity = activity;
+    }
+
+    public static StatusBarUtils with(Activity activity) {
+        return new StatusBarUtils(activity);
+    }
+
+    public int getColor() {
+        return mColor;
+    }
+
+    public StatusBarUtils setColor(int color) {
+        mColor = color;
+        return this;
+    }
+
+    public Drawable getDrawable() {
+        return mDrawable;
+    }
+
+    public StatusBarUtils setDrawable(Drawable drawable) {
+        mDrawable = drawable;
+        return this;
+    }
+
+    public boolean isDrawerLayout() {
+        return mIsDrawerLayout;
+    }
+
+    /**
+     * 是否是最外层布局为 DrawerLayout 的侧滑菜单
+     * @param drawerLayout 是否最外层布局为 DrawerLayout
+     * @param contentId 内容视图的 id
+     * @return
+     */
+    public StatusBarUtils setDrawerLayoutContentId(boolean drawerLayout, int contentId) {
+        mIsDrawerLayout = drawerLayout;
+        mContentResourseIdInDrawer = contentId;
+        return this;
+    }
+
+    public void init() {
+        fullScreen(mActivity);
+        if (mColor != -1) {
+            //设置了状态栏颜色
+            fitsSystemWindows(mActivity);
+            addStatusViewWithColor(mActivity, mColor);
+        }
+        if (mDrawable != null) {
+            //设置了状态栏 drawble，例如渐变色
+            fitsSystemWindows(mActivity);
+            addStatusViewWithDrawble(mActivity, mDrawable);
+        }
+        if (mColor == -1 && mDrawable == null && isDrawerLayout()) {
+            //未设置 fitsSystemWindows 且是侧滑菜单，需要设置 fitsSystemWindows 以解决 4.4 上侧滑菜单上方白条问题
+            fitsSystemWindows(mActivity);
+        }
     }
 
     /**
      * 设置页面最外层布局 FitsSystemWindows 属性
      *
      * @param activity
-     * @param value
      */
-    public static void setFitsSystemWindows(Activity activity, boolean value) {
+    private void fitsSystemWindows(Activity activity) {
         ViewGroup contentFrameLayout = (ViewGroup) activity.findViewById(android.R.id.content);
         View parentView = contentFrameLayout.getChildAt(0);
         if (parentView != null && Build.VERSION.SDK_INT >= 14) {
-            parentView.setFitsSystemWindows(value);
+            parentView.setFitsSystemWindows(true);
+            //布局预留状态栏高度的 padding
+            if (parentView instanceof DrawerLayout) {
+                DrawerLayout drawer = (DrawerLayout) parentView;
+                //将主页面顶部延伸至status bar;虽默认为false,但经测试,DrawerLayout需显示设置
+                drawer.setClipToPadding(false);
+            }
         }
     }
 
@@ -54,39 +127,115 @@ public class StatusBarUtils {
      *
      * @param activity
      */
-    public static void addStatusView(Activity activity) {
+    private void addStatusViewWithColor(Activity activity, int color) {
         ViewGroup contentView = (ViewGroup) activity.findViewById(android.R.id.content);
-        View statusBarView = new View(activity);
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                getStatusBarHeight(activity));
-        statusBarView.setBackgroundColor(activity.getResources().getColor(R.color.blue));
-        contentView.addView(statusBarView, lp);
+        //DrawerLayout 则需要在第一个子视图即内容试图中添加padding
+        View parentView = contentView.getChildAt(0);
+        if (mIsDrawerLayout) {
+            //侧滑菜单
+            DrawerLayout drawer = (DrawerLayout) parentView;
+            //内容视图
+            View content = activity.findViewById(mContentResourseIdInDrawer);
+            //将内容视图从 DrawerLayout 中移除
+            drawer.removeView(content);
+
+            LinearLayout linearLayout = new LinearLayout(activity);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
+            View statusBarView = new View(activity);
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    getStatusBarHeight(activity));
+            statusBarView.setBackgroundColor(color);
+            //添加占位状态栏到线性布局中
+            linearLayout.addView(statusBarView, lp);
+            //添加内容视图
+            linearLayout.addView(content, content.getLayoutParams());
+            //将带有占位状态栏的新的内容视图设置给 DrawerLayout
+            drawer.addView(linearLayout, 0);
+        } else {
+            View statusBarView = new View(activity);
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    getStatusBarHeight(activity));
+            statusBarView.setBackgroundColor(color);
+            contentView.addView(statusBarView, lp);
+        }
     }
 
     /**
-     * 通过设置全屏，设置状态栏透明 导航栏黑色
+     * 添加状态栏占位视图
      *
      * @param activity
      */
-    public static void SetFullScreen(Activity activity) {
+
+    private void addStatusViewWithDrawble(Activity activity, Drawable drawable) {
+        ViewGroup contentView = (ViewGroup) activity.findViewById(android.R.id.content);
+        //DrawerLayout 则需要在第一个子视图即内容试图中添加padding
+        View parentView = contentView.getChildAt(0);
+        if (parentView != null
+                && parentView instanceof DrawerLayout
+                && Build.VERSION.SDK_INT >= 14) {
+            //侧滑菜单
+            DrawerLayout drawer = (DrawerLayout) parentView;
+            //内容视图
+            if (drawer.getChildAt(0) instanceof ViewGroup) {
+                View content = drawer.getChildAt(0);
+                drawer.removeView(content);
+
+                LinearLayout linearLayout = new LinearLayout(activity);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
+
+                View statusBarView = new View(activity);
+                ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        getStatusBarHeight(activity));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    statusBarView.setBackground(drawable);
+                } else {
+                    statusBarView.setBackgroundDrawable(drawable);
+                }
+
+                linearLayout.addView(statusBarView, lp);
+                linearLayout.addView(content, content.getLayoutParams());
+
+                drawer.addView(linearLayout, 0);
+            }
+        } else {
+            View statusBarView = new View(activity);
+            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    getStatusBarHeight(activity));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                statusBarView.setBackground(drawable);
+            } else {
+                statusBarView.setBackgroundDrawable(drawable);
+            }
+            contentView.addView(statusBarView, lp);
+        }
+    }
+
+    /**
+     * 通过设置全屏，设置状态栏透明
+     *
+     * @param activity
+     */
+    private void fullScreen(Activity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
-                View decorView = activity.getWindow().getDecorView();
+                Window window = activity.getWindow();
+                View decorView = window.getDecorView();
                 //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
                 int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
                 decorView.setSystemUiVisibility(option);
-                activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.TRANSPARENT);
                 //导航栏颜色也可以正常设置
-                activity.getWindow().setNavigationBarColor(Color.TRANSPARENT);
+//                window.setNavigationBarColor(Color.TRANSPARENT);
             } else {
                 Window window = activity.getWindow();
                 WindowManager.LayoutParams attributes = window.getAttributes();
                 int flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
                 int flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
                 attributes.flags |= flagTranslucentStatus;
-                attributes.flags |= flagTranslucentNavigation;
+//                attributes.flags |= flagTranslucentNavigation;
                 window.setAttributes(attributes);
             }
         }
@@ -110,11 +259,11 @@ public class StatusBarUtils {
                 window.setAttributes(attributes);
 
                 window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                                                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                                                     | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-                           window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                             window.setStatusBarColor(Color.TRANSPARENT);
-                             window.setNavigationBarColor(Color.TRANSPARENT);
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(Color.TRANSPARENT);
+                window.setNavigationBarColor(Color.TRANSPARENT);
             } else {
                 Window window = activity.getWindow();
                 WindowManager.LayoutParams attributes = window.getAttributes();
