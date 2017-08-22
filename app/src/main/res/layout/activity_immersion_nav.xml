@@ -8,39 +8,39 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/rl_content"
+    <LinearLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/blue"
             android:visibility="visible">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_alignParentTop="true"
-                android:background="@color/blue"
-                android:visibility="visible">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="标题"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="标题"
-                    android:textColor="#ffffff"
-                    android:textSize="16sp"
-                    />
+        </RelativeLayout>
 
-            </RelativeLayout>
-
-        </LinearLayout>
+    </LinearLayout>
 
     <include
-        android:visibility="gone"
         android:id="@+id/content_include"
         layout="@layout/app_bar_immersion_nav"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"

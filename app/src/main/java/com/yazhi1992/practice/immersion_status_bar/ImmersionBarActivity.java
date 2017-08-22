@@ -16,11 +16,7 @@ public class ImmersionBarActivity extends AppCompatActivity {
 
         StatusBarUtils.with(this)
                 .setColor(getResources().getColor(R.color.blue))
+//                .setDrawable(getResources().getDrawable(R.drawable.shape))
                 .init();
-
-//        ImmersionBar.with(this)
-//                .keyboardEnable(true)  //解决软键盘与底部输入框冲突问题
-//                .init();
-
     }
 }

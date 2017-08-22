@@ -42,7 +42,8 @@
         </activity>
         <activity
             android:name=".immersion_status_bar.ImmersionBarActivity"
-            android:theme="@style/NoActionBarTheme">
+            android:theme="@style/NoActionBarTheme"
+            android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
             android:name=".immersion_status_bar.ImmersionNavActivity"
