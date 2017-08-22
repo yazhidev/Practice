@@ -33,4 +33,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="侧滑页面"/>
+
+    <Button
+        android:id="@+id/immersion_actionbar_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="ActionBar 渐变色 页面"/>
 </LinearLayout>

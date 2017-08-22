@@ -49,6 +49,9 @@
             android:label="@string/title_activity_immersion_nav"
             android:theme="@style/NoActionBarTheme">
         </activity>
+        <activity android:name=".immersion_status_bar.ImmersionActionBarActivity"
+                  android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

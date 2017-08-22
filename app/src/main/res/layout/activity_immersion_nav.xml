@@ -8,53 +8,32 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/rl_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible">
-
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/rl_content"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/blue"
+            android:layout_height="match_parent"
             android:visibility="visible">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="标题"
-                android:textColor="#ffffff"
-                android:textSize="16sp"
-                />
-
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="fitXY"
-            android:src="@mipmap/bg"
-            android:visibility="gone"
-            />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
-
-            <EditText
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                />
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:background="@color/blue"
+                android:visibility="visible">
 
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="标题"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"
+                    />
 
-    </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
 
     <include
         android:visibility="gone"

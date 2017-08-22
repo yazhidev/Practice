@@ -1,16 +1,24 @@
 package com.yazhi1992.practice.immersion_status_bar;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.graphics.ColorUtils;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+
+import com.yazhi1992.practice.R;
 
 /**
  * Created by zengyazhi on 2017/8/17.
@@ -24,6 +32,8 @@ public class StatusBarUtils {
     private Drawable mDrawable;
     //是否是最外层布局是 DrawerLayout 的侧滑菜单
     private boolean mIsDrawerLayout;
+    //是否包含 ActionBar
+    private boolean mIsActionBar;
     //侧滑菜单页面的内容视图
     private int mContentResourseIdInDrawer;
 
@@ -57,10 +67,20 @@ public class StatusBarUtils {
         return mIsDrawerLayout;
     }
 
+    public boolean isActionBar() {
+        return mIsActionBar;
+    }
+
+    public StatusBarUtils setIsActionBar(boolean actionBar) {
+        mIsActionBar = actionBar;
+        return this;
+    }
+
     /**
      * 是否是最外层布局为 DrawerLayout 的侧滑菜单
+     *
      * @param drawerLayout 是否最外层布局为 DrawerLayout
-     * @param contentId 内容视图的 id
+     * @param contentId    内容视图的 id
      * @return
      */
     public StatusBarUtils setDrawerLayoutContentId(boolean drawerLayout, int contentId) {
@@ -71,6 +91,7 @@ public class StatusBarUtils {
 
     public void init() {
         fullScreen(mActivity);
+        //有 ActionBar 的情况下，
         if (mColor != -1) {
             //设置了状态栏颜色
             fitsSystemWindows(mActivity);
@@ -85,6 +106,19 @@ public class StatusBarUtils {
             //未设置 fitsSystemWindows 且是侧滑菜单，需要设置 fitsSystemWindows 以解决 4.4 上侧滑菜单上方白条问题
             fitsSystemWindows(mActivity);
         }
+    }
+
+    /**
+     * 去除 ActionBar 阴影
+     */
+    public StatusBarUtils clearActionBarShadow() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            ActionBar supportActionBar = ((AppCompatActivity) mActivity).getSupportActionBar();
+            if (supportActionBar != null) {
+                supportActionBar.setElevation(0);
+            }
+        }
+        return this;
     }
 
     /**
@@ -119,6 +153,22 @@ public class StatusBarUtils {
             result = activity.getResources().getDimensionPixelSize(resourceId);
         }
         Log.e("getStatusBarHeight", result + "");
+        return result;
+    }
+
+    /**
+     * 获得 ActionBar 的高度
+     *
+     * @param context
+     * @return
+     */
+    public static int getActionBarHeight(Context context) {
+        int result = 0;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            TypedValue tv = new TypedValue();
+            context.getTheme().resolveAttribute(android.R.attr.actionBarSize, tv, true);
+            result = TypedValue.complexToDimensionPixelSize(tv.data, context.getResources().getDisplayMetrics());
+        }
         return result;
     }
 
@@ -224,6 +274,7 @@ public class StatusBarUtils {
                 //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
                 int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
                 decorView.setSystemUiVisibility(option);
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 window.setStatusBarColor(Color.TRANSPARENT);
