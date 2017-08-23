@@ -25,6 +25,14 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/hencoder_practive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HenCoder 练习代码（Kotlin 实现）"
+                android:textAllCaps="false"
+                />
+
+            <Button
                 android:id="@+id/immersionStatusBarBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

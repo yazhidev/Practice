@@ -41,5 +41,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="ActionBar 渐变色 页面"/>
+        android:textAllCaps="false"
+        android:text="ActionBar 渐变色页面"/>
 </LinearLayout>

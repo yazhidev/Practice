@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
+import com.yazhi1992.practice.hencoder.HenCoderActivity;
 import com.yazhi1992.practice.hook_icon.HookIconActivity;
 import com.yazhi1992.practice.immersion_status_bar.MainImmersionActivity;
 import com.yazhi1992.practice.line_chart_view.LineChartActivity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.lineChart).setOnClickListener(this);
         findViewById(R.id.wheelView).setOnClickListener(this);
         findViewById(R.id.alipayHookIconBtn).setOnClickListener(this);
+        findViewById(R.id.hencoder_practive).setOnClickListener(this);
     }
 
     @Override
@@ -77,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.immersionStatusBarBtn:
             //沉浸式状态栏
             startActivity(new Intent(this, MainImmersionActivity.class));
+            break;
+        case R.id.hencoder_practive:
+            //HenCoder 练习代码
+            startActivity(new Intent(this, HenCoderActivity.class));
             break;
         default:
             break;

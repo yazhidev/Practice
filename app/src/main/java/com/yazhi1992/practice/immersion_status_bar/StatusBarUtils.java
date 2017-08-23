@@ -1,12 +1,10 @@
 package com.yazhi1992.practice.immersion_status_bar;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.v4.graphics.ColorUtils;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,9 +15,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-
-import com.gyf.barlibrary.OSUtils;
-import com.yazhi1992.practice.R;
 
 /**
  * Created by zengyazhi on 2017/8/17.

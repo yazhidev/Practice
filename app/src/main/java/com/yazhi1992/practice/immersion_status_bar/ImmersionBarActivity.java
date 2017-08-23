@@ -3,7 +3,6 @@ package com.yazhi1992.practice.immersion_status_bar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.gyf.barlibrary.ImmersionBar;
 import com.yazhi1992.practice.R;
 
 public class ImmersionBarActivity extends AppCompatActivity {
