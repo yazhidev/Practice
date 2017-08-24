@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-
+import com.yazhi1992.practice.annnotation.TestAnnotationActivity;
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
 import com.yazhi1992.practice.hencoder.HenCoderActivity;
@@ -35,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.wheelView).setOnClickListener(this);
         findViewById(R.id.alipayHookIconBtn).setOnClickListener(this);
         findViewById(R.id.hencoder_practive).setOnClickListener(this);
+        findViewById(R.id.annotation_test).setOnClickListener(this);
     }
 
     @Override
@@ -83,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.hencoder_practive:
             //HenCoder 练习代码
             startActivity(new Intent(this, HenCoderActivity.class));
+            break;
+        case R.id.annotation_test:
+            //注解小 demo
+            startActivity(new Intent(this, TestAnnotationActivity.class));
             break;
         default:
             break;

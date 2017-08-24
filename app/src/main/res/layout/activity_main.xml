@@ -25,6 +25,14 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/annotation_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="注解小 demo"
+                android:textAllCaps="false"
+                />
+
+            <Button
                 android:id="@+id/hencoder_practive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
