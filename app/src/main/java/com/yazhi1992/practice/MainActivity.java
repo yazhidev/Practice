@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, LineChartActivity.class));
             break;
         case R.id.wheelView:
-            //滚轮
+            //折线图
             startActivity(new Intent(this, LineChartActivity.class));
             break;
         case R.id.alipayHookIconBtn:

@@ -54,9 +54,9 @@
             android:name=".immersion_status_bar.ImmersionActionBarActivity"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".hencoder.HenCoderActivity">
-        </activity>
         <activity android:name=".annnotation.TestAnnotationActivity">
+        </activity>
+        <activity android:name=".hencoder.HenCoderActivity">
         </activity>
     </application>
 
