@@ -10,11 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".eleme_button.ElemeBtnActivity">
         </activity>
@@ -57,13 +59,16 @@
         <activity android:name=".annnotation.TestAnnotationActivity">
         </activity>
         <activity android:name=".hencoder.ViwOneActivity">
+
+        </activity>
+        <activity android:name=".hencoder.HenCoder">
+        </activity>
+        <activity android:name=".flowlayout.FlowLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".hencoder.HenCoder">
         </activity>
     </application>
 
