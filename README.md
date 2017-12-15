@@ -6,6 +6,16 @@
 
 [github地址](https://github.com/yazhi1992/Practice)
 
+## 流式标签
+
+只做了简单又菜逼的实现，后面再优化~
+
+![流式标签](http://upload-images.jianshu.io/upload_images/1929170-c80f532e02c2d893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+## 侧滑菜单
+
+![侧滑菜单](http://upload-images.jianshu.io/upload_images/1929170-0657bca5cb3faf7f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 ## 饿了么加入购物车按钮
 
 ![eleme.gif](http://upload-images.jianshu.io/upload_images/1929170-992de19b7ba750e4.gif?imageMogr2/auto-orient/strip)
@@ -45,7 +55,5 @@
 ![折线](http://upload-images.jianshu.io/upload_images/1929170-a87c66d0610bbe81.gif?imageMogr2/auto-orient/strip)
 
 ## 渐变圆环
-
 真机效果没这么丑的~
-
 ![圆环.gif](http://upload-images.jianshu.io/upload_images/1929170-adf6c82d173fdcb5.gif?imageMogr2/auto-orient/strip)
