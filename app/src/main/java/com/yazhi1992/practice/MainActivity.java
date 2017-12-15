@@ -8,6 +8,7 @@ import com.yazhi1992.practice.annnotation.TestAnnotationActivity;
 import com.yazhi1992.practice.arthmetic_practive.ArthmeticActivity;
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
+import com.yazhi1992.practice.flowlayout.FlowLayoutActivity;
 import com.yazhi1992.practice.hencoder.HenCoder;
 import com.yazhi1992.practice.hook_icon.HookIconActivity;
 import com.yazhi1992.practice.immersion_status_bar.MainImmersionActivity;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.annotation_test).setOnClickListener(this);
         findViewById(R.id.question_practive).setOnClickListener(this);
         findViewById(R.id.arthmetic_practive).setOnClickListener(this);
+        findViewById(R.id.flowlayout).setOnClickListener(this);
     }
 
     @Override
@@ -100,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.arthmetic_practive:
             //算法
             startActivity(new Intent(this, ArthmeticActivity.class));
+            break;
+        case R.id.flowlayout:
+            //流式标签
+            startActivity(new Intent(this, FlowLayoutActivity.class));
             break;
         default:
             break;

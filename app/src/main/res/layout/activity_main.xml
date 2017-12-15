@@ -135,6 +135,13 @@
                 android:text="圆角控件"
                 />
 
+            <Button
+                android:id="@+id/flowlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="流式标签"
+                />
+
         </LinearLayout>
 
     </ScrollView>
