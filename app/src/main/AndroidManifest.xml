@@ -54,8 +54,6 @@
             android:name=".immersion_status_bar.ImmersionActionBarActivity"
             android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".hencoder.HenCoderActivity">
-        </activity>
         <activity android:name=".annnotation.TestAnnotationActivity">
         </activity>
         <activity
@@ -67,6 +65,17 @@
         <activity android:name=".question_button.OnTouchActivity">
         </activity>
         <activity android:name=".arthmetic_practive.ArthmeticActivity">
+        </activity>
+        <activity android:name=".hencoder.ViwOneActivity">
+        </activity>
+        <activity android:name=".hencoder.HenCoder">
+        </activity>
+        <activity android:name=".flowlayout.FlowLayoutActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

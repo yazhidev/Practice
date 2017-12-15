@@ -8,7 +8,7 @@ import com.yazhi1992.practice.annnotation.TestAnnotationActivity;
 import com.yazhi1992.practice.arthmetic_practive.ArthmeticActivity;
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
-import com.yazhi1992.practice.hencoder.HenCoderActivity;
+import com.yazhi1992.practice.hencoder.HenCoder;
 import com.yazhi1992.practice.hook_icon.HookIconActivity;
 import com.yazhi1992.practice.immersion_status_bar.MainImmersionActivity;
 import com.yazhi1992.practice.line_chart_view.LineChartActivity;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(this, LineChartActivity.class));
             break;
         case R.id.wheelView:
-            //滚轮
+            //折线图
             startActivity(new Intent(this, LineChartActivity.class));
             break;
         case R.id.alipayHookIconBtn:
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
         case R.id.hencoder_practive:
             //HenCoder 练习代码
-            startActivity(new Intent(this, HenCoderActivity.class));
+            startActivity(new Intent(this, HenCoder.class));
             break;
         case R.id.annotation_test:
             //注解小 demo
