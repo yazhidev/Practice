@@ -41,6 +41,22 @@
                 />
 
             <Button
+                android:id="@+id/question_practive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="解惑"
+                android:textAllCaps="false"
+                />
+
+            <Button
+                android:id="@+id/arthmetic_practive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="算法"
+                android:textAllCaps="false"
+                />
+
+            <Button
                 android:id="@+id/immersionStatusBarBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

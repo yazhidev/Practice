@@ -5,14 +5,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import com.yazhi1992.practice.annnotation.TestAnnotationActivity;
+import com.yazhi1992.practice.arthmetic_practive.ArthmeticActivity;
 import com.yazhi1992.practice.bezier_anim.BezierAnimActivity;
 import com.yazhi1992.practice.eleme_button.ElemeBtnActivity;
 import com.yazhi1992.practice.hencoder.HenCoderActivity;
 import com.yazhi1992.practice.hook_icon.HookIconActivity;
 import com.yazhi1992.practice.immersion_status_bar.MainImmersionActivity;
 import com.yazhi1992.practice.line_chart_view.LineChartActivity;
+import com.yazhi1992.practice.question_button.QuestionActivity;
 import com.yazhi1992.practice.ripple_view.RippleActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
+import com.yazhi1992.practice.question_button.SizeActivity;
 import com.yazhi1992.practice.vertical_text.VerticalTextActivity;
 import com.yazhi1992.practice.wave_view.WaveViewActivity;
 
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.alipayHookIconBtn).setOnClickListener(this);
         findViewById(R.id.hencoder_practive).setOnClickListener(this);
         findViewById(R.id.annotation_test).setOnClickListener(this);
+        findViewById(R.id.question_practive).setOnClickListener(this);
+        findViewById(R.id.arthmetic_practive).setOnClickListener(this);
     }
 
     @Override
@@ -42,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
         case R.id.elemeBtn:
             //饿了么购物车按钮
-            startActivity(new Intent(this, ElemeBtnActivity.class));
+            startActivity(new Intent(MainActivity.this, ElemeBtnActivity.class));
             break;
         case R.id.rotateBtn:
             //饿了么购物车按钮
@@ -87,6 +92,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.annotation_test:
             //注解小 demo
             startActivity(new Intent(this, TestAnnotationActivity.class));
+            break;
+        case R.id.question_practive:
+            //解惑
+            startActivity(new Intent(this, QuestionActivity.class));
+            break;
+        case R.id.arthmetic_practive:
+            //算法
+            startActivity(new Intent(this, ArthmeticActivity.class));
             break;
         default:
             break;

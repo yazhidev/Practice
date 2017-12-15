@@ -58,6 +58,16 @@
         </activity>
         <activity android:name=".annnotation.TestAnnotationActivity">
         </activity>
+        <activity
+            android:name=".question_button.SizeActivity"
+            android:theme="@style/NoActionBarTheme">
+        </activity>
+        <activity android:name=".question_button.QuestionActivity">
+        </activity>
+        <activity android:name=".question_button.OnTouchActivity">
+        </activity>
+        <activity android:name=".arthmetic_practive.ArthmeticActivity">
+        </activity>
     </application>
 
 </manifest>
