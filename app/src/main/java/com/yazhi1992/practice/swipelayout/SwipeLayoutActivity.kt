@@ -13,8 +13,8 @@ class SwipeLayoutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swipe_layout)
 
-        tv_content.setOnClickListener(View.OnClickListener { Toast.makeText(this, "content", Toast.LENGTH_SHORT).show() })
-        tvMenu1.setOnClickListener(View.OnClickListener { Toast.makeText(this, "menu1", Toast.LENGTH_SHORT).show() })
-        tvMenu2.setOnClickListener(View.OnClickListener { Toast.makeText(this, "menu2", Toast.LENGTH_SHORT).show() })
+        tv_content.setOnClickListener(View.OnClickListener { Toast.makeText(this, "内容", Toast.LENGTH_SHORT).show() })
+        tvMenu1.setOnClickListener(View.OnClickListener { Toast.makeText(this, "菜单1", Toast.LENGTH_SHORT).show() })
+        tvMenu2.setOnClickListener(View.OnClickListener { Toast.makeText(this, "菜单2", Toast.LENGTH_SHORT).show() })
     }
 }

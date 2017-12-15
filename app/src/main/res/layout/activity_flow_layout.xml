@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context="com.yazhi1992.practice.flowlayout.FlowLayoutActivity">
 
     <com.yazhi1992.practice.flowlayout.Flowlayout
         android:id="@+id/flowlayout"
-        android:background="#eeeeee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></com.yazhi1992.practice.flowlayout.Flowlayout>
 

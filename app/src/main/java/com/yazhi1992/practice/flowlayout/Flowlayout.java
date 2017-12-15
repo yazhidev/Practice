@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.yazhi1992.practice.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -180,8 +182,9 @@ public class Flowlayout extends ViewGroup {
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             layoutParams.setMargins(10, 10, 10, 10);
             textView.setLayoutParams(layoutParams);
-            textView.setTextColor(Color.BLACK);
-            textView.setBackgroundColor(Color.LTGRAY);
+            textView.setTextColor(Color.WHITE);
+            textView.setPadding(10, 5,10, 5);
+            textView.setBackgroundColor(getResources().getColor(R.color.blue));
             addView(textView);
         }
     }

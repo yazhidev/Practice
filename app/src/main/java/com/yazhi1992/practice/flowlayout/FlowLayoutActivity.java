@@ -17,17 +17,15 @@ public class FlowLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flow_layout);
 
-        data.add("[a123123");
-        data.add("[a12312dfasdfa3");
-        data.add("[a12daf3123");
-        data.add("[a313");
-        data.add("[a123adfad123");
-        data.add("[a12312sssss3");
-        data.add("[a12312fad3");
-        data.add("[a12badfffff123");
-        data.add("[a1d23123");
-        data.add("[a13123");
-        data.add("[a3");
+        data.add("我要做远方的忠诚的儿子");
+        data.add("和物质的");
+        data.add("短暂情人");
+        data.add("和所有以梦为马的");
+        data.add("诗人一样");
+        data.add("我");
+        data.add("不得不和");
+        data.add("烈士和小丑");
+        data.add("走在同一道路上");
 
         Flowlayout flowLayout = (Flowlayout) findViewById(R.id.flowlayout);
         flowLayout.setData(data);
