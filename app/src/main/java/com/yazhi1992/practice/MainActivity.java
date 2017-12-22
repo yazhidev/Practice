@@ -22,6 +22,7 @@ import com.yazhi1992.practice.wave_view.WaveViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //test add
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
