@@ -66,13 +66,15 @@
         <activity android:name=".hencoder.HenCoder">
         </activity>
         <activity android:name=".flowlayout.FlowLayoutActivity">
+        </activity>
+        <activity android:name=".swipelayout.SwipeLayoutActivity">
+        </activity>
+        <activity android:name=".lint.LintActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".swipelayout.SwipeLayoutActivity">
         </activity>
     </application>
 
