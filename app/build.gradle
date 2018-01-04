@@ -37,10 +37,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
-
-    compile project(":lint") {
-        exclude group: 'crg.intellij.lang', module: 'annotations'
-    }
+//
+//    compile project(":lint") {
+//        exclude group: 'crg.intellij.lang', module: 'annotations'
+//    }
 }
 
 
@@ -73,5 +73,30 @@ project.afterEvaluate{
 repositories {
     mavenCentral()
 }
+
+//gradle 建立完任务有向图后执行，否则找不到 assembleRelease 等任务
+project.afterEvaluate{
+    assembleRelease.doLast {
+        copy {
+            def savePath = file("./release_file/")
+
+            from "${buildDir}/outputs/apk/app-release-unsigned.apk"
+            into savePath
+
+            from "${buildDir}/intermediates/symbols/release/R.txt"
+            into savePath
+            rename { String fileName ->
+                fileName.replace("R.txt", "app-release-R.txt")
+            }
+
+//            from "${buildDir}/outputs/mapping/${variant.dirName}/mapping.txt"
+//            into destPath
+//            rename { String fileName ->
+//                fileName.replace("mapping.txt", "${newFileNamePrefix}-mapping.txt")
+//            }
+        }
+    }
+}
+
 
 apply plugin: 'kotlin-android-extensions'
