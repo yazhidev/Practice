@@ -20,10 +20,12 @@ jar {
     }
 }
 
+// 定义一个方法lintJarOutput
 configurations {
     lintJarOutput
 }
 
+// 指定定义方法lintJarOutput的作用，此处是获得调用jar方法后的生成的jar包
 dependencies {
     lintJarOutput files(jar)
 }

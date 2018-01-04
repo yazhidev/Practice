@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "27.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+// 定义方法lintJarImport
+configurations {
+    lintJarImport
+}
+
+// 链接到 lint 模块中的 lintJarOutput 方法，获得jar包
+dependencies {
+    lintJarImport project(path: ":lintJar", configuration: "lintJarOutput")
+}
+
+// 将 lint.jar 复制到 build/intermediates/lint/ 目录下
+task copyLintJar(type: Copy){
+    from (configurations.lintJarImport) {
+        rename {
+            String fileName ->
+                'lint.jar'
+        }
+    }
+    into 'build/intermediates/lint/'
+}
+
+// 当项目 build 到 compileLint 时执行 copyLintJar 方法
+project.afterEvaluate{
+    def compileLintTask = project.tasks.find {it.name == 'compileLint'}
+    compileLintTask.dependsOn(copyLintJar)
+}

@@ -23,7 +23,7 @@ public class MyLogDetector extends Detector implements Detector.JavaScanner {
             "LogUse",
             "避免使用Log/System.out.println",
             "使用MyLog",
-            Category.SECURITY, 5, Severity.ERROR,
+            Category.SECURITY, 10, Severity.FATAL,
             new Implementation(MyLogDetector.class, Scope.JAVA_FILE_SCOPE));
 
 

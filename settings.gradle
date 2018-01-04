@@ -1,1 +1,1 @@
-include ':app', ':lint'
+include ':app', ':lintJar', ':lintAar'

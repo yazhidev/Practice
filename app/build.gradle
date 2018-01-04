@@ -23,7 +23,10 @@ android {
     }
     lintOptions {
         textReport true // 输出lint报告
-        abortOnError false
+        abortOnError true
+        textOutput 'stdout'
+        check 'LogUse'
+        checkReleaseBuilds true
     }
 }
 
@@ -38,36 +41,7 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
 
-    compile project(":lint") {
-        exclude group: 'crg.intellij.lang', module: 'annotations'
-    }
-}
-
-
-configurations {
-    lintJarImport
-}
-
-// 链接到 lint 模块中的 lintJarOutput 方法，获得jar包
-dependencies {
-    lintJarImport project(path: ":lint", configuration: "lintJarOutput")
-}
-
-// 将 lint.jar 复制到 build/intermediates/lint/ 目录下
-task copyLintJar(type: Copy){
-    from (configurations.lintJarImport) {
-        rename {
-            String fileName ->
-                'lint.jar'
-        }
-    }
-    into 'build/intermediates/lint/'
-}
-
-// 当项目 build 到 compileLint 时执行 copyLintJar 方法
-project.afterEvaluate{
-    def compileLintTask = project.tasks.find {it.name == 'compileLint'}
-    compileLintTask.dependsOn(copyLintJar)
+    compile project(":lintAar")
 }
 
 repositories {
@@ -75,3 +49,4 @@ repositories {
 }
 
 apply plugin: 'kotlin-android-extensions'
+
