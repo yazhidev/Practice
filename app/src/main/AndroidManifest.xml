@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".eleme_button.ElemeBtnActivity">
         </activity>
@@ -44,11 +49,6 @@
             android:name=".immersion_status_bar.ImmersionNavActivity"
             android:label="@string/title_activity_immersion_nav"
             android:theme="@style/NoActionBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
             android:name=".immersion_status_bar.ImmersionActionBarActivity"
@@ -56,8 +56,7 @@
         </activity>
         <activity android:name=".annnotation.TestAnnotationActivity">
         </activity>
-        <activity
-            android:name=".question_button.SizeActivity"
+        <activity android:name=".question_button.SizeActivity"
             android:theme="@style/NoActionBarTheme">
         </activity>
         <activity android:name=".question_button.QuestionActivity">

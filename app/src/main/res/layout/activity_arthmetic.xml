@@ -9,10 +9,18 @@
     tools:context="com.yazhi1992.practice.arthmetic_practive.ArthmeticActivity">
 
     <Button
-        android:id="@+id/arthmetic_choose"
+        android:id="@+id/arthmetic_Selection_sort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="选择排序"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/arthmetic_Quick_Sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="快速排序"
         android:textAllCaps="false"
         />
 
