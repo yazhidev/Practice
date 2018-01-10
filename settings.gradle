@@ -1,1 +1,3 @@
-include ':app', ':lintJar', ':lintAar'
+include ':app', ':lint', ':lintAar'
+project(':lint').projectDir = new File('../work/xiaoyu_lint/lint')
+project(':lintAar').projectDir = new File('../work/xiaoyu_lint/lintAar')

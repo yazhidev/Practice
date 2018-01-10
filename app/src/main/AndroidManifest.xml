@@ -44,6 +44,11 @@
             android:name=".immersion_status_bar.ImmersionNavActivity"
             android:label="@string/title_activity_immersion_nav"
             android:theme="@style/NoActionBarTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name=".immersion_status_bar.ImmersionActionBarActivity"
@@ -68,13 +73,6 @@
         <activity android:name=".flowlayout.FlowLayoutActivity">
         </activity>
         <activity android:name=".swipelayout.SwipeLayoutActivity">
-        </activity>
-        <activity android:name=".lint.LintActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
     </application>
 
