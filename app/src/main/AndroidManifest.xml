@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yazhi1992.practice">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".eleme_button.ElemeBtnActivity">
         </activity>
@@ -71,6 +73,10 @@
         <activity android:name=".swipelayout.SwipeLayoutActivity">
         </activity>
         <activity android:name=".video_list.VideoListActivity">
+
+        </activity>
+        <activity android:name=".video_list.VideoPlayActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
