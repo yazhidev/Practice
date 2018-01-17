@@ -18,8 +18,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 /**
  * Created by zengyazhi on 2018/1/17.
  */
-
-public class IjkVideoTextureView extends FrameLayout implements TextureView.SurfaceTextureListener {
+// TODO: 2018/1/17 显示首帧
+public class TextureVideoPlayer extends FrameLayout implements TextureView.SurfaceTextureListener, IVideoPlayer {
 
     private IMediaPlayer mMediaPlayer = null;
     private Context mContext;
@@ -27,18 +27,18 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
     private String mPath;
     private SurfaceTexture mSurfaceTexture;
     private Surface mSurface;
-    private YazhiController mController;
+    private AbsVideoController mController;
     private FrameLayout mContainer;
 
-    public IjkVideoTextureView(Context context) {
+    public TextureVideoPlayer(Context context) {
         this(context, null);
     }
 
-    public IjkVideoTextureView(Context context, AttributeSet attrs) {
+    public TextureVideoPlayer(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public IjkVideoTextureView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TextureVideoPlayer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
@@ -49,7 +49,11 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
         mMediaPlayer = new IjkMediaPlayer();
         initContainer();
         initTextureView();
-//        mPath = "http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8";
+    }
+
+    public void setController(AbsVideoController controller) {
+        controller.setVideoPlayer(this);
+        mContainer.addView(controller);
     }
 
     private void initContainer() {
@@ -69,12 +73,13 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
         mContainer.addView(mTextureView, layoutParams);
     }
 
+    /**
+     * 设置地址
+     * @param path
+     */
     public void setPath(String path) {
         //如果是第一次播放视频，那就创建一个新的surfaceView
         mPath = path;
-    }
-
-    private void startPlay() {
     }
 
     private void openMediaPlayer() {
@@ -96,27 +101,45 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //给mediaPlayer设置视图
             mMediaPlayer.prepareAsync();
         }
 
         mMediaPlayer.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(IMediaPlayer iMediaPlayer) {
-                mMediaPlayer.seekTo(4000);
+                mMediaPlayer.seekTo(0);
+                mMediaPlayer.pause();
             }
         });
     }
 
-
-    /**
-     * 封装控制视频的方法
-     */
-
+    @Override
     public void start() {
         if (mMediaPlayer != null) {
             mMediaPlayer.start();
         }
+    }
+
+    @Override
+    public void pause() {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.pause();
+        }
+    }
+
+    @Override
+    public void seekTo(long position) {
+        if (mMediaPlayer != null) {
+            mMediaPlayer.seekTo(position);
+        }
+    }
+
+    @Override
+    public boolean isPlaying() {
+        if(mMediaPlayer != null) {
+            return mMediaPlayer.isPlaying();
+        }
+        return false;
     }
 
     public void release() {
@@ -127,18 +150,11 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
         }
     }
 
-    public void pause() {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.pause();
-        }
-    }
-
     public void stop() {
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
         }
     }
-
 
     public void reset() {
         if (mMediaPlayer != null) {
@@ -146,7 +162,7 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
         }
     }
 
-
+    @Override
     public long getDuration() {
         if (mMediaPlayer != null) {
             return mMediaPlayer.getDuration();
@@ -155,19 +171,12 @@ public class IjkVideoTextureView extends FrameLayout implements TextureView.Surf
         }
     }
 
-
+    @Override
     public long getCurrentPosition() {
         if (mMediaPlayer != null) {
             return mMediaPlayer.getCurrentPosition();
         } else {
             return 0;
-        }
-    }
-
-
-    public void seekTo(long l) {
-        if (mMediaPlayer != null) {
-            mMediaPlayer.seekTo(l);
         }
     }
 

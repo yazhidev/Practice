@@ -9,10 +9,10 @@
         android:layout_height="match_parent"
         tools:context="com.yazhi1992.practice.video_list.VideoPlayActivity">
 
-        <com.yazhi1992.practice.video_list.IjkVideoTextureView
-            android:id="@+id/videoPlayer"
+        <com.yazhi1992.practice.video_list.TextureVideoPlayer
+            android:id="@+id/textureVideoPlayer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></com.yazhi1992.practice.video_list.IjkVideoTextureView>
+            android:layout_height="match_parent"></com.yazhi1992.practice.video_list.TextureVideoPlayer>
 
     </RelativeLayout>
 

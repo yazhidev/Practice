@@ -16,22 +16,22 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * Created by zengyazhi on 2018/1/17.
  */
 
-public class IjkVideoSurfaceView extends FrameLayout implements SurfaceHolder.Callback {
+public class VideoPlayer extends FrameLayout implements SurfaceHolder.Callback {
 
     private IMediaPlayer mMediaPlayer = null;
     private Context mContext;
     private SurfaceView mSurfaceView;
     private String mPath;
 
-    public IjkVideoSurfaceView(Context context) {
+    public VideoPlayer(Context context) {
         this(context, null);
     }
 
-    public IjkVideoSurfaceView(Context context, AttributeSet attrs) {
+    public VideoPlayer(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public IjkVideoSurfaceView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public VideoPlayer(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }

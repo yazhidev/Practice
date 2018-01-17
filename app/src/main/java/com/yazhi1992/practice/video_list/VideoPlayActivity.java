@@ -12,6 +12,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
 public class VideoPlayActivity extends AppCompatActivity {
 
     private ActivityVideoPlayBinding mBinding;
+    private AbsVideoController mVideoController;
+    private TextureVideoPlayer mVideoPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +28,22 @@ public class VideoPlayActivity extends AppCompatActivity {
             finish();
         }
 
-        mBinding.videoPlayer.setPath("http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8");
-
+        mVideoPlayer = mBinding.textureVideoPlayer;
+        mVideoController = new MyVideoController(this);
+        mBinding.textureVideoPlayer.setController(mVideoController);
+        mBinding.textureVideoPlayer.setPath("http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8");
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
+        mVideoPlayer.pause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mVideoPlayer.pause();
         IjkMediaPlayer.native_profileEnd();
     }
 }

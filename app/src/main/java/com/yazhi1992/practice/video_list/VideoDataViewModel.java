@@ -9,7 +9,7 @@ import android.databinding.ObservableField;
 
 public class VideoDataViewModel {
 
-    public static final String PLAY = "play"; //播放中
+    public static final String PLAY = "start"; //播放中
     public static final String PAUSE = "pause"; //暂停
     public static final String DESTROY = "destroy"; //销毁
 
