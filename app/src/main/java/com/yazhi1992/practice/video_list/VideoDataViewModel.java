@@ -15,7 +15,7 @@ public class VideoDataViewModel {
 
     public ObservableField<String> title = new ObservableField<>();
     public ObservableField<String> playStatus = new ObservableField<>(PAUSE);
-
+    public ObservableField<String> url = new ObservableField<>();
 
     @BindingAdapter("initItem")
     public static void videoPath(ItemVideoView view, VideoDataViewModel item) {
@@ -26,5 +26,10 @@ public class VideoDataViewModel {
     @BindingAdapter("initPresenter")
     public static void videoPath(ItemVideoView view, SingleTypeAdapter2.Presenter presenter) {
         view.mBinding.setPresenter(presenter);
+    }
+
+    @BindingAdapter("initPath")
+    public static void videoPath(ItemVideoView view, String url) {
+        view.setPath(url);
     }
 }

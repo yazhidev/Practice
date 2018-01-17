@@ -17,6 +17,7 @@ import com.yazhi1992.practice.databinding.ItemVideoBinding;
 public class ItemVideoView extends RelativeLayout {
 
     public ItemVideoBinding mBinding;
+    private MyVideoController mMyVideoController;
 
     public ItemVideoView(Context context) {
         this(context, null);
@@ -27,7 +28,7 @@ public class ItemVideoView extends RelativeLayout {
         mBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_video, this, true);
     }
 
-    public void init() {
+    public void init(Context context) {
 //        mBinding.videoPlayView.setSeekBar(findViewById(R.id.seekBar));
 //        mBinding.videoPlayView.setTvCurrent(findViewById(R.id.tvCurrentInItem));
 //        mBinding.videoPlayView.setTvDuration(findViewById(R.id.tvDuration));
@@ -38,10 +39,17 @@ public class ItemVideoView extends RelativeLayout {
 //            }
 //        });
 //        mBinding.videoPlayView.setPath(mBinding.getItem().fileUrl.get());
+
+        mMyVideoController = new MyVideoController(context);
+        mBinding.videoPlayer.setController(mMyVideoController);
     }
 
     public ItemVideoView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public void setPath(String url) {
+        mBinding.videoPlayer.setPath(url);
     }
 
 }

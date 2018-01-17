@@ -52,8 +52,8 @@ public class MyVideoController extends AbsVideoController {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 long duration = mVideoPlayer.getDuration();
-
-                mVideoPlayer.seekTo(seekBar.getProgress());
+                long position = duration * seekBar.getProgress() / 1000;
+                mVideoPlayer.seekTo(position);
             }
         });
     }
