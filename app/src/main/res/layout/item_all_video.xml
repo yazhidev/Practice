@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tool="http://schemas.android.com/tools"
+    >
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="item"
+            type="com.yazhi1992.practice.video_list.VideoDataViewModel"/>
+
+        <variable
+            name="presenter"
+            type="com.yazhi1992.practice.video_list.SingleTypeAdapter2.Presenter"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rl_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EDF1FA">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20px"
+                android:layout_marginLeft="30px"
+                android:layout_marginTop="40px"
+                android:text="@{item.title}"
+                android:textColor="#222222"
+                android:textSize="30px"
+                tool:text="是的发放"
+                />
+
+        </RelativeLayout>
+
+        <com.yazhi1992.practice.video_list.ItemVideoView
+            android:layout_width="match_parent"
+            app:initItem="@{item}"
+            app:initPresenter="@{presenter}"
+            android:layout_height="200dp"></com.yazhi1992.practice.video_list.ItemVideoView>
+
+
+    </RelativeLayout>
+
+</layout>

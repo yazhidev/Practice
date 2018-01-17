@@ -14,7 +14,7 @@ public class ArthmeticActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arthmetic);
 
-        findViewById(R.id.arthmetic_choose).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.arthmetic_Selection_sort).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //选择排序

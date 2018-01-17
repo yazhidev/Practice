@@ -28,6 +28,9 @@ android {
         check 'LogUse'
         checkReleaseBuilds true
     }
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
