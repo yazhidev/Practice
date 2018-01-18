@@ -3,9 +3,7 @@ package com.yazhi1992.practice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.yazhi1992.practice.annnotation.TestAnnotationActivity;
 import com.yazhi1992.practice.arthmetic_practive.ArthmeticActivity;
@@ -20,6 +18,8 @@ import com.yazhi1992.practice.question_button.QuestionActivity;
 import com.yazhi1992.practice.ripple_view.RippleActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
 import com.yazhi1992.practice.vertical_text.VerticalTextActivity;
+import com.yazhi1992.practice.video_list.VideoListActivity;
+import com.yazhi1992.practice.video_list.VideoPlayActivity;
 import com.yazhi1992.practice.wave_view.WaveViewActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -44,9 +44,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.question_practive).setOnClickListener(this);
         findViewById(R.id.arthmetic_practive).setOnClickListener(this);
         findViewById(R.id.flowlayout).setOnClickListener(this);
-
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
-        Log.d("test", "test");
+        findViewById(R.id.video_list).setOnClickListener(this);
+        findViewById(R.id.video_play).setOnClickListener(this);
     }
 
     @Override
@@ -111,6 +110,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.flowlayout:
             //流式标签
             startActivity(new Intent(this, FlowLayoutActivity.class));
+            break;
+        case R.id.video_play:
+            //流式标签
+            startActivity(new Intent(this, VideoPlayActivity.class));
+            break;
+        case R.id.video_list:
+            //流式标签
+            startActivity(new Intent(this, VideoListActivity.class));
             break;
         default:
             break;

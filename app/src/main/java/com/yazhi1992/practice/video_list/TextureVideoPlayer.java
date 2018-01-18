@@ -19,6 +19,8 @@ import tv.danmaku.ijk.media.player.IjkMediaPlayer;
  * Created by zengyazhi on 2018/1/17.
  */
 // TODO: 2018/1/17 显示首帧
+// TODO: 2018/1/18 缓冲时很卡
+// TODO: 2018/1/18 重复点击播放崩溃
 public class TextureVideoPlayer extends FrameLayout implements TextureView.SurfaceTextureListener, IVideoPlayer {
 
     private IMediaPlayer mMediaPlayer = null;
@@ -107,14 +109,16 @@ public class TextureVideoPlayer extends FrameLayout implements TextureView.Surfa
         mMediaPlayer.setOnPreparedListener(new IMediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(IMediaPlayer iMediaPlayer) {
-                mMediaPlayer.seekTo(0);
-                mMediaPlayer.pause();
+//                mMediaPlayer.seekTo(0);
+//                mMediaPlayer.pause();
             }
         });
     }
 
     @Override
     public void start() {
+        VideoPlayManager.getInstance().setCurrentVideoPlayer(this);
+        openMediaPlayer();
         if (mMediaPlayer != null) {
             mMediaPlayer.start();
         }
@@ -142,11 +146,12 @@ public class TextureVideoPlayer extends FrameLayout implements TextureView.Surfa
         return false;
     }
 
+    @Override
     public void release() {
         if (mMediaPlayer != null) {
+            // TODO: 2018/1/18 保存播放位置
             mMediaPlayer.reset();
             mMediaPlayer.release();
-            mMediaPlayer = null;
         }
     }
 
@@ -187,7 +192,7 @@ public class TextureVideoPlayer extends FrameLayout implements TextureView.Surfa
             mSurfaceTexture = surface;
             //mContainer移除重新添加后，mContainer及其内部的mTextureView和mController都会重绘，mTextureView重绘后，
             // 会重新new一个SurfaceTexture，并重新回调onSurfaceTextureAvailable方法
-            openMediaPlayer();
+//            openMediaPlayer();
         } else {
             mTextureView.setSurfaceTexture(mSurfaceTexture);
         }

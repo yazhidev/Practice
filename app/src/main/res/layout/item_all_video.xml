@@ -42,7 +42,9 @@
         </RelativeLayout>
 
         <com.yazhi1992.practice.video_list.ItemVideoView
+            android:id="@+id/itemVideoView"
             android:layout_width="match_parent"
+            android:layout_below="@+id/rl_title"
             app:initItem="@{item}"
             app:initPresenter="@{presenter}"
             android:layout_height="200dp"></com.yazhi1992.practice.video_list.ItemVideoView>

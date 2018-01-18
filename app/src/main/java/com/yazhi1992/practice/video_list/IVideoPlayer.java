@@ -11,4 +11,5 @@ public interface IVideoPlayer {
     boolean isPlaying();
     long getDuration();
     long getCurrentPosition();
+    void release();
 }

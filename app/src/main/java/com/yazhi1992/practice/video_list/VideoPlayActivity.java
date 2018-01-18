@@ -30,8 +30,8 @@ public class VideoPlayActivity extends AppCompatActivity {
 
         mVideoPlayer = mBinding.textureVideoPlayer;
         mVideoController = new MyVideoController(this);
-        mBinding.textureVideoPlayer.setController(mVideoController);
-        mBinding.textureVideoPlayer.setPath("http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8");
+        mVideoPlayer.setController(mVideoController);
+        mVideoPlayer.setPath("http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8");
     }
 
     @Override

@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".eleme_button.ElemeBtnActivity">
         </activity>
@@ -72,18 +77,14 @@
         </activity>
         <activity android:name=".flowlayout.FlowLayoutActivity">
         </activity>
-        <activity android:name=".swipelayout.SwipeLayoutActivity">
+        <activity android:name=".swipelayout.SwipeLayoutActivity">®
         </activity>
         <activity android:name=".video_list.VideoListActivity">
 
         </activity>
         <activity android:name=".video_list.VideoPlayActivity"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
     </application>
 

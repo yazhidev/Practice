@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * Created by chenliu on 17/9/27.
- *
  */
 
 public class SingleTypeAdapter2<T> extends BaseViewAdapter<T>{

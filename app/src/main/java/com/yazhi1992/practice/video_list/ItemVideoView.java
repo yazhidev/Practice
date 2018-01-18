@@ -26,6 +26,7 @@ public class ItemVideoView extends RelativeLayout {
     public ItemVideoView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
         mBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_video, this, true);
+        init(context);
     }
 
     public void init(Context context) {

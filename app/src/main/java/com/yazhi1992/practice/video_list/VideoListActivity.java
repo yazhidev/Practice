@@ -4,10 +4,12 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.yazhi1992.practice.R;
 import com.yazhi1992.practice.databinding.ActivityVideoListBinding;
+import com.yazhi1992.practice.databinding.ItemAllVideoBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,8 @@ public class VideoListActivity extends AppCompatActivity {
     private List<VideoDataViewModel> datas = new ArrayList<>();
     private SingleTypeAdapter2<VideoDataViewModel> mAdapter;
 
-//    http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8
+    private String url = "http://7xr4ce.media1.z0.glb.clouddn.com/22379-201801171138804.m3u8";
+    private String url2 = "http://download.jiayouxueba.com/test1000.m3u8";
 //    http://download.jiayouxueba.com/test1000.m3u8
 
     @Override
@@ -33,6 +36,11 @@ public class VideoListActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             VideoDataViewModel videoDataViewModel = new VideoDataViewModel();
             videoDataViewModel.title.set("第 " + i);
+            if (i == 0) {
+                videoDataViewModel.url.set(url);
+            } else if (i == 2) {
+                videoDataViewModel.url.set(url2);
+            }
             datas.add(videoDataViewModel);
         }
 
@@ -45,5 +53,17 @@ public class VideoListActivity extends AppCompatActivity {
         });
         mBinding.ry.setLayoutManager(new LinearLayoutManager(this));
         mBinding.ry.setAdapter(mAdapter);
+        mBinding.ry.setRecyclerListener(new RecyclerView.RecyclerListener() {
+            @Override
+            public void onViewRecycled(RecyclerView.ViewHolder holder) {
+                ((ItemAllVideoBinding)((BindingViewHolder)holder).mBinding).itemVideoView.mBinding.videoPlayer.release();
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        VideoPlayManager.getInstance().release();
     }
 }

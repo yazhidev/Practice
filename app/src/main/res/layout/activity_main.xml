@@ -25,6 +25,20 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/video_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="视频列表"
+                />
+
+            <Button
+                android:id="@+id/video_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="视频播放"
+                />
+
+            <Button
                 android:id="@+id/annotation_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,6 +155,7 @@
                 android:layout_height="wrap_content"
                 android:text="流式标签"
                 />
+
 
         </LinearLayout>
 

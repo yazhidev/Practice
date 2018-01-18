@@ -20,7 +20,7 @@ public class VideoDataViewModel {
     @BindingAdapter("initItem")
     public static void videoPath(ItemVideoView view, VideoDataViewModel item) {
         view.mBinding.setItem(item);
-        view.init();
+        view.setPath(item.url.get());
     }
 
     @BindingAdapter("initPresenter")
@@ -30,6 +30,5 @@ public class VideoDataViewModel {
 
     @BindingAdapter("initPath")
     public static void videoPath(ItemVideoView view, String url) {
-        view.setPath(url);
     }
 }
