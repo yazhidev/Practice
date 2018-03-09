@@ -3,9 +3,10 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.yazhi1992.practice">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-sdk tools:overrideLibrary="tv.danmaku.ijk.media.player_x86_64"/>
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -77,14 +78,14 @@
         </activity>
         <activity android:name=".flowlayout.FlowLayoutActivity">
         </activity>
-        <activity android:name=".swipelayout.SwipeLayoutActivity">®
+        <activity android:name=".swipelayout.SwipeLayoutActivity">
+            ®
         </activity>
         <activity android:name=".video_list.VideoListActivity">
-
         </activity>
-        <activity android:name=".video_list.VideoPlayActivity"
+        <activity
+            android:name=".video_list.VideoPlayActivity"
             android:screenOrientation="landscape">
-
         </activity>
     </application>
 

@@ -12,4 +12,5 @@ public interface IVideoPlayer {
     long getDuration();
     long getCurrentPosition();
     void release();
+    String getDataSourceUrl();
 }

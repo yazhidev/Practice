@@ -155,6 +155,11 @@ public class TextureVideoPlayer extends FrameLayout implements TextureView.Surfa
         }
     }
 
+    @Override
+    public String getDataSourceUrl() {
+        return mPath;
+    }
+
     public void stop() {
         if (mMediaPlayer != null) {
             mMediaPlayer.stop();
