@@ -142,6 +142,13 @@
                 android:text="流式标签"
                 />
 
+            <Button
+                android:id="@+id/proxy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="代理模式"
+                />
+
         </LinearLayout>
 
     </ScrollView>

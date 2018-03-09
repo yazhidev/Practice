@@ -3,9 +3,7 @@ package com.yazhi1992.practice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.yazhi1992.practice.annnotation.TestAnnotationActivity;
 import com.yazhi1992.practice.arthmetic_practive.ArthmeticActivity;
@@ -16,6 +14,7 @@ import com.yazhi1992.practice.hencoder.HenCoder;
 import com.yazhi1992.practice.hook_icon.HookIconActivity;
 import com.yazhi1992.practice.immersion_status_bar.MainImmersionActivity;
 import com.yazhi1992.practice.line_chart_view.LineChartActivity;
+import com.yazhi1992.practice.proxy.ProxyActivity;
 import com.yazhi1992.practice.question_button.QuestionActivity;
 import com.yazhi1992.practice.ripple_view.RippleActivity;
 import com.yazhi1992.practice.rotate_circle.RotateCircleActivity;
@@ -44,9 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.question_practive).setOnClickListener(this);
         findViewById(R.id.arthmetic_practive).setOnClickListener(this);
         findViewById(R.id.flowlayout).setOnClickListener(this);
-
-        Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
-        Log.d("test", "test");
+        findViewById(R.id.proxy).setOnClickListener(this);
     }
 
     @Override
@@ -111,6 +108,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         case R.id.flowlayout:
             //流式标签
             startActivity(new Intent(this, FlowLayoutActivity.class));
+            break;
+        case R.id.proxy:
+            //代理模式
+            startActivity(new Intent(this, ProxyActivity.class));
             break;
         default:
             break;
