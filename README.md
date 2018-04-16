@@ -6,6 +6,10 @@
 
 [github地址](https://github.com/yazhi1992/Practice)
 
+## 下载模块
+
+前阵子项目里需要重写下载模块，于是简单写了个下载模块。[DDownload](https://github.com/yazhi1992/DDownload)了解一下。
+
 ## 流式标签
 
 只做了简单又菜逼的实现，后面再优化~
